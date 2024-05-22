@@ -1,26 +1,23 @@
 import React from "react";
-import { TwitterLogin } from "react-oauth";
-cd;
+import { TwitterLoginButton as TwitterLoginButtonComponent } from "react-twitter-auth";
+
 const TwitterLoginButton = () => {
   const onSuccess = (response) => {
-    response.json().then((body) => {
-      console.log(body);
-      // Handle success - save user data, tokens, etc.
-    });
+    console.log("Login success:", response);
+    // Handle successful login
   };
 
   const onFailure = (error) => {
-    console.error(error);
+    console.error("Login failure:", error);
+    // Handle login failure
   };
 
   return (
-    <TwitterLogin
-      loginUrl="http://localhost:3001/api/v1/auth/twitter"
-      onFailure={onFailure}
+    <TwitterLoginButtonComponent
+      consumerKey="YOUR_TWITTER_CONSUMER_KEY"
+      consumerSecret="YOUR_TWITTER_CONSUMER_SECRET"
       onSuccess={onSuccess}
-      requestTokenUrl="http://localhost:3001/api/v1/auth/twitter/reverse"
-      consumerKey="YOUR_CONSUMER_KEY"
-      consumerSecret="YOUR_CONSUMER_SECRET"
+      onFailure={onFailure}
     />
   );
 };
