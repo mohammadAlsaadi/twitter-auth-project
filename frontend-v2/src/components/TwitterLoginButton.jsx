@@ -1,5 +1,5 @@
 import React from "react";
-import { TwitterLogin } from "react-oauth/twitter";
+import { TwitterLogin } from "react-oauth";
 
 const TwitterLoginButton = () => {
   const onSuccess = (response) => {
